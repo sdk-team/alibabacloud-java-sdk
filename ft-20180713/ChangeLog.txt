@@ -1,3 +1,6 @@
+2020-09-01 Version: 1.0.5
+- Generated java 2018-07-13 for Ft.
+
 2020-09-01 Version: 1.0.4
 - Generated java 2018-07-13 for Ft.
 
