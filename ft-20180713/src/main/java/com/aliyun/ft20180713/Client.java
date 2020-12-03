@@ -5,6 +5,7 @@ import com.aliyun.tea.*;
 import com.aliyun.ft20180713.models.*;
 
 public class Client extends com.aliyun.tearpc.Client {
+
     public Client(com.aliyun.tearpc.models.Config config) throws Exception {
         super(config);
         this._endpointRule = "regional";
@@ -33,6 +34,7 @@ public class Client extends com.aliyun.tearpc.Client {
             new TeaPair("cn-hangzhou-test-306", "ft.aliyuncs.com"),
             new TeaPair("cn-hongkong-finance-pop", "ft.aliyuncs.com"),
             new TeaPair("cn-huhehaote", "ft.aliyuncs.com"),
+            new TeaPair("cn-huhehaote-nebula-1", "ft.aliyuncs.com"),
             new TeaPair("cn-qingdao", "ft.aliyuncs.com"),
             new TeaPair("cn-qingdao-nebula", "ft.aliyuncs.com"),
             new TeaPair("cn-shanghai-et15-b01", "ft.aliyuncs.com"),
@@ -45,7 +47,9 @@ public class Client extends com.aliyun.tearpc.Client {
             new TeaPair("cn-shenzhen-st4-d01", "ft.aliyuncs.com"),
             new TeaPair("cn-shenzhen-su18-b01", "ft.aliyuncs.com"),
             new TeaPair("cn-wuhan", "ft.aliyuncs.com"),
+            new TeaPair("cn-wulanchabu", "ft.aliyuncs.com"),
             new TeaPair("cn-yushanfang", "ft.aliyuncs.com"),
+            new TeaPair("cn-zhangbei", "ft.aliyuncs.com"),
             new TeaPair("cn-zhangbei-na61-b01", "ft.aliyuncs.com"),
             new TeaPair("cn-zhangjiakou-na62-a01", "ft.aliyuncs.com"),
             new TeaPair("cn-zhengzhou-nebula-1", "ft.aliyuncs.com"),
@@ -61,8 +65,14 @@ public class Client extends com.aliyun.tearpc.Client {
     }
 
 
-    public TestFlowStrategy01Response testFlowStrategy01WithOptions(TestFlowStrategy01Request request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
-        com.aliyun.teautil.Common.validateModel(request);
+    public TestFlowStrategy01Response testFlowStrategy01WithOptions(TestFlowStrategy01Request tmp, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+        com.aliyun.teautil.Common.validateModel(tmp);
+        TestFlowStrategy01ShrinkRequest request = new TestFlowStrategy01ShrinkRequest();
+        com.aliyun.common.Common.convert(tmp, request);
+        if (!com.aliyun.teautil.Common.isUnset(tmp.names)) {
+            request.namesShrink = com.aliyun.teautil.Common.toJSONString(tmp.names);
+        }
+
         return TeaModel.toModel(this.doRequest("TestFlowStrategy01", "HTTPS", "PUT", "2018-07-13", "AK", null, TeaModel.buildMap(request), runtime), new TestFlowStrategy01Response());
     }
 
@@ -71,8 +81,22 @@ public class Client extends com.aliyun.tearpc.Client {
         return this.testFlowStrategy01WithOptions(request, runtime);
     }
 
-    public TestHttpApiResponse testHttpApiWithOptions(TestHttpApiRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
-        com.aliyun.teautil.Common.validateModel(request);
+    public TestHttpApiResponse testHttpApiWithOptions(TestHttpApiRequest tmp, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+        com.aliyun.teautil.Common.validateModel(tmp);
+        TestHttpApiShrinkRequest request = new TestHttpApiShrinkRequest();
+        com.aliyun.common.Common.convert(tmp, request);
+        if (!com.aliyun.teautil.Common.isUnset(tmp.stringValue)) {
+            request.stringValueShrink = com.aliyun.teautil.Common.toJSONString(tmp.stringValue);
+        }
+
+        if (!com.aliyun.teautil.Common.isUnset(tmp.defaultValue)) {
+            request.defaultValueShrink = com.aliyun.teautil.Common.toJSONString(tmp.defaultValue);
+        }
+
+        if (!com.aliyun.teautil.Common.isUnset(tmp.otherParam)) {
+            request.otherParamShrink = com.aliyun.teautil.Common.toJSONString(tmp.otherParam);
+        }
+
         return TeaModel.toModel(this.doRequest("TestHttpApi", "HTTPS", "POST", "2018-07-13", "AK", null, TeaModel.buildMap(request), runtime), new TestHttpApiResponse());
     }
 
